@@ -18,16 +18,12 @@ const Hero = () => {
       <Wrapper>
         {/* Left Div */}
         <div className="absolute flex flex-col mt-20">
-          <div>
-            <h1 className="scroll-m-20 text-3xl text-center lg:text-start lg:leading-tight font-bold lg:text-6xl max-w-xl text-white 2xl:max-w-7xl opacity-90 mt-11">
+            <h1 className="transition ease-in-out delay-150 scroll-m-20 text-3xl text-center lg:text-start lg:leading-tight font-bold lg:text-6xl max-w-xl text-white 2xl:max-w-7xl opacity-90 mt-11">
               Raining Offers For Hot Summer!
             </h1>
-          </div>
-          <div>
-            <h2 className="text-[19px] text-center lg:text-start lg:text-2xl lg:font-bold max-w-sm 2xl:max-w-4xl text-white mt-9">
+            <h2 className="transition ease-in-out delay-150 text-[19px] text-center lg:text-start lg:text-2xl lg:font-bold max-w-sm 2xl:max-w-4xl text-white mt-9">
               25% Off On All Products
             </h2>
-          </div>
           <div>
             <Link href={"/"}>
               <div className="flex lg:flex-row flex-col gap-y-4 lg:gap-x-4 mt-10 font-medium max-w-[360px] lg:max-w-none">
