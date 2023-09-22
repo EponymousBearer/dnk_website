@@ -1,4 +1,4 @@
-import logo from "/public/dnk_logo.png";
+import dnk_logo_black from "/public/dnk_logo_black.png";
 import logo_mobile from "/public/logo_mobile.png";
 import React from "react";
 import Image from "next/image";
@@ -10,17 +10,17 @@ import Wrapper from "../shared/Wrapper";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import CartButton from "../CartButton";
 
-const Header = () => {
+const Header2 = () => {
   return (
-    <section className=" top-0 left-0 w-full relative  z-50">
-      <div className="hidden lg:flex bg-[#0274be] bg-opacity-10 items-center justify-between py-8 lg:py-6 px-6">
+    <section className=" top-0 left-0 w-full relative z-50">
+      <div className="hidden lg:flex bg-white items-center justify-between py-4 lg:py-0 px-6">
         <div className="hidden lg:flex items-center justify-between flex-auto">
           <Link href={"../"}>
-            <Image className="items-center scale-90" src={logo} alt="logo" />
+            <Image className="items-center mx-3" height={40} width={100} src={dnk_logo_black} alt="logo" />
           </Link>
         </div>
-        <div className="hidden lg:flex items-center justify-between w-full">
-          <ul className="flex gap-x-7 text-white text-sm font-semibold items-center">
+        <div className="hidden lg:flex items-center justify-between w-full px-6">
+          <ul className="flex gap-x-7 text-black text-sm font-semibold items-center">
             <li>
               <Link href={"/category/everything"}>EVERYTHING</Link>
             </li>
@@ -34,7 +34,7 @@ const Header = () => {
               <Link href={"/category/men"}>ACCESSORIES</Link>
             </li>
           </ul>
-          <ul className="flex gap-x-6 text-white text-sm items-center">
+          <ul className="flex gap-x-6 text-black text-sm items-center">
             <li>
               <Link href={"/"}>ABOUT</Link>
             </li>
@@ -109,4 +109,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header2;
