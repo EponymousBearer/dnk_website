@@ -1,10 +1,9 @@
 'use client'
 import React, { useState } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { FC } from "react";
 import Link from "next/link";
 import { Star } from "lucide-react";
-
 type ColorOption = {
   color: string;
   overlayColor: string;
@@ -13,15 +12,18 @@ type ColorOption = {
 };
 
 type Product = {
-  _id: number;
+  id: number;
   title: string;
   category: string;
-  price: number;
-  imageUrl: string;
+  priceType: "fixed" | "range" | "discounted";
+  price: number; // For products with a fixed actual price
+  priceRange?: [number, number]; // For products with a price range
+  discountedPrice?: number; // For products with a discounted price
+  imageUrl: StaticImageData;
   colors?: ColorOption[]; // Make colors optional
 };
 
-const ProductCart: FC<{ item: Product }> = ({ item }) => {
+const ProductCart: React.FC<{ item: Product }> = ({ item }) => {
   const [selectedColorIndex, setSelectedColorIndex] = useState<number | null>(null);
   const selectedColorOption = item.colors && selectedColorIndex !== null ? item.colors[selectedColorIndex] : null;
 
@@ -50,14 +52,34 @@ const ProductCart: FC<{ item: Product }> = ({ item }) => {
           ></div>
         )}
       </div>
+      
       <div className="lg:space-y-1">
         <h2 className="mt-3 text-lg font-semibold">{item.title}</h2>
         <h5 className="text-[#888] text-sm">{item.category}</h5>
-        <h1 className="font-medium">
-          ${selectedColorOption
+        
+        {item.priceType === "discounted" && (
+            <div className=" text-gray-500 line-through">
+              ${item.price?.toFixed(2)}
+            </div>
+          )}
+          {item.priceType === "fixed" && (
+            <div className=" text-black">
+              ${selectedColorOption
             ? (item.price + selectedColorOption.priceChange).toFixed(2)
             : item.price.toFixed(2)}
-        </h1>
+            </div>
+          )}
+          {item.priceType === "range" && (
+            <div className=" text-black">
+              ${item.priceRange?.[0].toFixed(2)} - $
+              {item.priceRange?.[1].toFixed(2)}
+            </div>
+          )}
+          {item.priceType === "discounted" && (
+            <div className=" text-black">
+              ${item.discountedPrice?.toFixed(2)}
+            </div>
+          )}
         {item.colors && ( // Check if colors are defined for the product
           <div className="flex space-x-2">
             {item.colors.map((colorOption, index) => (
