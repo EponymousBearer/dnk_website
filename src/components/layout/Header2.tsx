@@ -22,16 +22,16 @@ const Header2 = () => {
         <div className="hidden lg:flex items-center justify-between w-full px-6">
           <ul className="flex gap-x-7 text-black text-sm font-semibold items-center">
             <li>
-              <Link href={"/category/everything"}>EVERYTHING</Link>
+              <Link href={"/category/Everything"}>EVERYTHING</Link>
             </li>
             <li>
-              <Link href={"/category/women"}>WOMEN</Link>
+              <Link href={"/category/Women"}>WOMEN</Link>
             </li>
             <li>
-              <Link href={"/category/men"}>MEN</Link>
+              <Link href={"/category/MEN"}>MEN</Link>
             </li>
             <li>
-              <Link href={"/category/men"}>ACCESSORIES</Link>
+              <Link href={"/category/Accessories"}>ACCESSORIES</Link>
             </li>
           </ul>
           <ul className="flex gap-x-6 text-black text-sm items-center">

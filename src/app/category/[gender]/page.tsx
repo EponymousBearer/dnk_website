@@ -18,11 +18,15 @@ import { ArrowRight } from "lucide-react";
 import { ProductProvider } from "@/components/ProductContext";
 import Filter from "@/components/Filter";
 
+const getProductsByCategory = (category: string) =>{
+  return products.filter((product) => product.category === category);
+};
 export default async function CategoryPage({ params }: { params: any }) {
+  const result = getProductsByCategory(params.gender);
   const menus = [
-    { title: "Accessories", path: "/your-path", quantity: "7" },
-    { title: "Men", path: "/your-path", quantity: "14" },
-    { title: "Women", path: "/your-path", quantity: "17" },
+    { title: "Accessories", path: "/category/Accessories", quantity: "7" },
+    { title: "Men", path: "/category/Men", quantity: "14" },
+    { title: "Women", path: "/category/Women", quantity: "17" },
   ];
 
   return (
@@ -102,9 +106,14 @@ export default async function CategoryPage({ params }: { params: any }) {
                 </Select>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-4 py-2">
-                {products.map((product: any) => (
+                {
+                result.length > 0 ?
+                result.map((product: any) => (
                   <ProductCart key={product._id} item={product} />
-                ))}
+                )) : (
+                  <p>No Products Found</p>
+                )
+                }
               </div>
               <div className="flex gap-x-2 py-4 lg:mt-4 mt-12 lg:py-10">
                 <Button className="px-4 h-2 border border-black bg-black text-white hover:bg-black hover:text-white">
