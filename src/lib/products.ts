@@ -75,5 +75,66 @@ export type ProductColor = {
       price: 150,
       imageUrl: dark_blue_demin_jeans,
     },
+    {
+      _id: 4,
+      title: "Dark Blue Denim Jeans",
+      category: "Men",
+      price: 150,
+      imageUrl: dark_blue_demin_jeans,
+    },    {
+      _id: 4,
+      title: "Dark Blue Denim Jeans",
+      category: "Men",
+      price: 150,
+      imageUrl: dark_blue_demin_jeans,
+    },    {
+      _id: 4,
+      title: "Dark Blue Denim Jeans",
+      category: "Men",
+      price: 150,
+      imageUrl: dark_blue_demin_jeans,
+    },    {
+      _id: 4,
+      title: "Dark Blue Denim Jeans",
+      category: "Men",
+      price: 150,
+      imageUrl: dark_blue_demin_jeans,
+    },    {
+      _id: 4,
+      title: "Dark Blue Denim Jeans",
+      category: "Men",
+      price: 150,
+      imageUrl: dark_blue_demin_jeans,
+    },    {
+      _id: 4,
+      title: "Dark Blue Denim Jeans",
+      category: "Men",
+      price: 150,
+      imageUrl: dark_blue_demin_jeans,
+    },    {
+      _id: 4,
+      title: "Dark Blue Denim Jeans",
+      category: "Men",
+      price: 150,
+      imageUrl: dark_blue_demin_jeans,
+    },    {
+      _id: 4,
+      title: "Dark Blue Denim Jeans",
+      category: "Men",
+      price: 150,
+      imageUrl: dark_blue_demin_jeans,
+    },    {
+      _id: 4,
+      title: "Dark Blue Denim Jeans",
+      category: "Men",
+      price: 150,
+      imageUrl: dark_blue_demin_jeans,
+    },    {
+      _id: 4,
+      title: "Dark Blue Denim Jeans",
+      category: "Men",
+      price: 150,
+      imageUrl: dark_blue_demin_jeans,
+    },
   ];
   

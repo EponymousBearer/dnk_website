@@ -17,6 +17,7 @@ import {
 import { ArrowRight } from "lucide-react";
 import { ProductProvider } from "@/components/ProductContext";
 import Filter from "@/components/Filter";
+import DefaultSortingDropdown from "@/components/DefaultSortingDropdown";
 
 export default async function CategoryPage({ params }: { params: any }) {
   const menus = [
@@ -36,7 +37,7 @@ export default async function CategoryPage({ params }: { params: any }) {
             <section className="px-2 lg:px-8">
               <SearchBar />
               <div className="py-16">
-                <Filter products={products}/>
+                <Filter products={products} />
               </div>
               <div className="py-8">
                 <h1 className="text-lg">Categories</h1>
@@ -79,27 +80,30 @@ export default async function CategoryPage({ params }: { params: any }) {
               </p>
               <div className="py-4 text-sm lg:text-base flex items-center justify-between">
                 <div>Showing 1 – 12 of 14 results</div>
-                <Select>
-                  <SelectTrigger className="w-[200px] lg:w-[220px]">
-                    <SelectValue placeholder="Default sorting" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="default">Default sorting</SelectItem>
-                    <SelectItem value="popularity">
-                      Sort by popularity
-                    </SelectItem>
-                    <SelectItem value="average_rating">
-                      Sort by average rating
-                    </SelectItem>
-                    <SelectItem value="latest">Sort by latest</SelectItem>
-                    <SelectItem value="low_to_high">
-                      Sort by price: low to high
-                    </SelectItem>
-                    <SelectItem value="high_to_low">
-                      Sort by price: high to low
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
+                <DefaultSortingDropdown />
+                {/* <div>
+                  <Select>
+                    <SelectTrigger className="w-[200px] lg:w-[220px]">
+                      <SelectValue placeholder="Default sorting" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="default">Default sorting</SelectItem>
+                      <SelectItem value="popularity">
+                        Sort by popularity
+                      </SelectItem>
+                      <SelectItem value="average_rating">
+                        Sort by average rating
+                      </SelectItem>
+                      <SelectItem value="latest">Sort by latest</SelectItem>
+                      <SelectItem value="low_to_high">
+                        Sort by price: low to high
+                      </SelectItem>
+                      <SelectItem value="high_to_low">
+                        Sort by price: high to low
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div> */}
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-4 py-2">
                 {products.map((product: any) => (

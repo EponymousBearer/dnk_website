@@ -1,3 +1,4 @@
+'use client'
 import dnk_logo_black from "/public/dnk_logo_black.png";
 import logo_mobile from "/public/logo_mobile.png";
 import React from "react";
@@ -9,10 +10,11 @@ import { Search, Menu, User2, ShoppingBag } from "lucide-react";
 import Wrapper from "../shared/Wrapper";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import CartButton from "../CartButton";
+import { motion } from "framer-motion";
 
 const Header2 = () => {
   return (
-    <section className=" top-0 left-0 w-full relative z-50">
+    <motion.section initial={{ y: "-100vh"}} animate={{ y: 0 }} transition={{ duration: 1 }} className=" top-0 left-0 w-full relative z-50">
       <div className="hidden lg:flex bg-white items-center justify-between py-4 lg:py-0 px-6">
         <div className="hidden lg:flex items-center justify-between flex-auto">
           <Link href={"../"}>
@@ -105,7 +107,7 @@ const Header2 = () => {
           </Sheet>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

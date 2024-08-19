@@ -8,6 +8,7 @@ import bs_2 from "/public/bs_2.jpg";
 import bs_3 from "/public/bs_3.jpg";
 import bs_4 from "/public/bs_4.jpg";
 import bs_5 from "/public/bs_5.jpg";
+import { motion } from "framer-motion";
 
 type Product = {
   id: number;
@@ -22,7 +23,7 @@ type Product = {
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   return (
-    <div className="flex border-b-2 border-gray-200">
+    <div className="flex">
       {/* Product Image (on the left) */}
       <div className="flex-shrink-0 mb-4 mt-5">
         <Image
@@ -119,11 +120,17 @@ const sampleProducts: Product[] = [
 
 const App: React.FC = () => {
   return (
-    <div>
+    <motion.div
+      whileInView={{ opacity: 1 }}
+      initial={{ opacity: 0, y: "10vh" }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+    >
       {sampleProducts.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
-    </div>
+    </motion.div>
   );
 };
 

@@ -7,9 +7,9 @@ export default async function Home() {
   return (
     <section className="">
       <Header></Header>
-        <Hero></Hero>
-        <LogoRotator/>
-        <ProductList></ProductList>
+      <Hero></Hero>
+      <LogoRotator />
+      <ProductList></ProductList>
     </section>
   );
 }

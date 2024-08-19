@@ -1,3 +1,4 @@
+"use client";
 import Wrapper from "@/components/shared/Wrapper";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,45 +6,84 @@ import women from "/public/first.jpg";
 import men from "/public/second.jpg";
 import sandle from "/public/third.jpg";
 import { Button } from "@/components/ui/button";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const products = [
   {
     id: 1,
     title: "20% Off On Tank Tops",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dictum.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dictum.",
     image: women,
+    initial: { x: -90, opacity: 0.2 },
+    animate: { x: 0, opacity: 1 },
   },
   {
     id: 2,
     title: "Latest Eyewear For You",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dictum.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dictum.",
     image: men,
+    initial: { y: 50, opacity: 0.2 }, // Initial position from the top
+    animate: { y: 0, opacity: 1 },
   },
   {
     id: 3,
     title: "Let's Lorem Suit Up!",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dictum.",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dictum.",
     image: sandle,
+    initial: { x: 90, opacity: 0.2 }, // Initial position from the right
+    animate: { x: 0, opacity: 1 },
   },
 ];
 
 export default function ProductList() {
   const itemsToShow = 3; // Number of products to show
   const currentIndex = 0; // Starting index, you can change this as needed
+  const [scrollY, setScrollY] = useState(0);
+  const controls = useAnimation();
 
   const displayedItems = products.slice(
     currentIndex,
     currentIndex + itemsToShow
   );
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    // You can adjust the scroll position at which the animations trigger
+    const triggerPosition = 200;
+
+    products.forEach((product) => {
+      if (scrollY > triggerPosition) {
+        controls.start(product.animate);
+      }
+    });
+  }, [scrollY, controls]);
+
   return (
     <Wrapper>
       <section className="lg:py-28">
         <div className="flex justify-center items-center flex-col gap-y-6 lg:grid lg:grid-cols-[repeat(3,auto)] lg:gap-x-5 2xl:gap-x-96 ">
           {displayedItems.map((item) => (
-            <div
+            <motion.div
               key={item.id}
               className="relative"
+              initial={item.initial}
+              animate={controls}
+              transition={{ duration: 0.7 }}
             >
               <div className="h-[290px] w-[390px] lg:h-[480px] lg:w-[320px] xl:h-[470px] xl:w-[370px] relative">
                 {/* Dull black overlay */}
@@ -65,7 +105,7 @@ export default function ProductList() {
                     Buy Now
                 </Link> */}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>

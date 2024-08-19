@@ -1,9 +1,10 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 import { FC } from "react";
 import Link from "next/link";
 import { Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 type ColorOption = {
   color: string;
@@ -22,18 +23,32 @@ type Product = {
 };
 
 const ProductCart: FC<{ item: Product }> = ({ item }) => {
-  const [selectedColorIndex, setSelectedColorIndex] = useState<number | null>(null);
-  const selectedColorOption = item.colors && selectedColorIndex !== null ? item.colors[selectedColorIndex] : null;
+  const [selectedColorIndex, setSelectedColorIndex] = useState<number | null>(
+    null
+  );
+  const selectedColorOption =
+    item.colors && selectedColorIndex !== null
+      ? item.colors[selectedColorIndex]
+      : null;
 
   const handleColorClick = (index: number) => {
     setSelectedColorIndex(index);
   };
 
   return (
-    <div className="relative">
+    <motion.div
+      whileInView={{ opacity: 1 }}
+      initial={{ opacity: 0, y: "10vh" }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="relative"
+      viewport={{ once: true }}
+    >
       <div className="h-[190px] w-[170px] lg:h-[280px] lg:w-[260px] xl:h-[270px] xl:w-[250px]">
         <Image
-          src={selectedColorOption ? selectedColorOption.imageSrc : item.imageUrl}
+          src={
+            selectedColorOption ? selectedColorOption.imageSrc : item.imageUrl
+          }
           alt="Product"
           height={500}
           width={400}
@@ -54,7 +69,8 @@ const ProductCart: FC<{ item: Product }> = ({ item }) => {
         <h2 className="mt-3 text-lg font-semibold">{item.title}</h2>
         <h5 className="text-[#888] text-sm">{item.category}</h5>
         <h1 className="font-medium">
-          ${selectedColorOption
+          $
+          {selectedColorOption
             ? (item.price + selectedColorOption.priceChange).toFixed(2)
             : item.price.toFixed(2)}
         </h1>
@@ -84,7 +100,7 @@ const ProductCart: FC<{ item: Product }> = ({ item }) => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
